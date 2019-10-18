@@ -5,18 +5,18 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     private double[] temp;
+
     public TemperatureSeriesAnalysis() {
     }
 
-    public TemperatureSeriesAnalysis(double [] temper) {
-        this.temp =  Arrays.copyOf(temper, temper.length);
+    public TemperatureSeriesAnalysis(double[] temper) {
+        this.temp = Arrays.copyOf(temper, temper.length);
         for (int i = 0; i < temp.length; i++) {
             if (temp[i] <= -273) {
                 throw new InputMismatchException();
             }
         }
     }
-
 
 
     public double average() {
@@ -27,7 +27,7 @@ public class TemperatureSeriesAnalysis {
         for (int i = 0; i < temp.length; i++) {
             sum += temp[i];
         }
-        return sum/ temp.length;
+        return sum / temp.length;
     }
 
     public double deviation() {
@@ -41,7 +41,7 @@ public class TemperatureSeriesAnalysis {
             sum += new_el;
 
         }
-        return Math.sqrt(sum/temp.length);
+        return Math.sqrt(sum / temp.length);
 
     }
 
@@ -77,7 +77,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToZero() {
-        if (temp.length==0) {
+        if (temp.length == 0) {
             throw new IllegalArgumentException();
 
         }
@@ -85,11 +85,11 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToValue(double tempValue) {
-        if (temp.length==0) {
+        if (temp.length == 0) {
             throw new IllegalArgumentException();
 
         }
-        if (temp.length==1) {
+        if (temp.length == 1) {
             return temp[0];
         }
         double closest_el = temp[0] - tempValue;
@@ -102,17 +102,17 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsLessThen(double tempValue) {
-        if (temp.length==0) {
+        if (temp.length == 0) {
             throw new IllegalArgumentException();
 
         }
         int leng_needed = 0;
-        for (double t: temp) {
+        for (double t : temp) {
             if (t < tempValue) {
                 leng_needed++;
             }
         }
-        double [] new_arr = new double[leng_needed];
+        double[] new_arr = new double[leng_needed];
         for (int i = 0; i < temp.length; i++) {
             if (temp[i] < tempValue) {
                 new_arr[i] = temp[i];
@@ -124,29 +124,29 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
-        if (temp.length==0) {
+        if (temp.length == 0) {
             throw new IllegalArgumentException();
 
         }
-        if (temp.length==1) {
+        if (temp.length == 1) {
             if (temp[0] > tempValue) {
                 return temp;
             }
 
         }
         int leng_needed = 0;
-        for (double t: temp) {
+        for (double t : temp) {
             if (t < tempValue) {
                 leng_needed++;
             }
         }
         int k = 0;
-        double [] new_arr = new double[leng_needed];
+        double[] new_arr = new double[leng_needed];
         for (int i = 0; i < temp.length; i++) {
             if (temp[i] > tempValue) {
                 new_arr[k] = temp[i];
                 k++;
-                if (k >=leng_needed) break;
+                if (k >= leng_needed) break;
             }
         }
         return new_arr;
@@ -159,24 +159,24 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        double [] res;
-        res =  new double[temp.length * 2];
-        int sum=0;
+        double[] res;
+        res = new double[temp.length * 2];
+        int sum = 0;
         int i = 0;
-        for (double t: temp) {
+        for (double t : temp) {
             res[i] = t;
             sum += t;
             i++;
         }
-        for (double t: temps) {
+        for (double t : temps) {
             res[i] = t;
             sum += t;
             i++;
         }
         this.temp = res;
         return sum;
-        }
-
-
     }
+
+
+}
 

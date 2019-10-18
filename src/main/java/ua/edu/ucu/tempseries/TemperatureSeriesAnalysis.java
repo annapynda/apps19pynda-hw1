@@ -5,20 +5,15 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     private double[] temp;
-
-    public TemperatureSeriesAnalysis() {
-    }
-
     public TemperatureSeriesAnalysis(double[] temper) {
         this.temp = Arrays.copyOf(temper, temper.length);
-        int n = -273;
+        final double ELMIN = -273.0;
         for (int i = 0; i < temp.length; i++) {
-            if (temp[i] <= n) {
+            if (temp[i] <= ELMIN) {
                 throw new InputMismatchException();
             }
         }
     }
-
 
     public double average() {
         if (temp.length == 0) {

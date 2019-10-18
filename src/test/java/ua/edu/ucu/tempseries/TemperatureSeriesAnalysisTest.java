@@ -217,6 +217,13 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.0001);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testfindAddTempsWithEmptyArray() {
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        seriesAnalysis.addTemps(20.0);
+    }
+
     @Test
     public void testAddTemps() {
         double[] temperatureSeries = {3.0, 1.0, 5.0};
@@ -224,6 +231,25 @@ public class TemperatureSeriesAnalysisTest {
         double expResult = 18.0;
         int actualResult = seriesAnalysis.addTemps(9.0);
         assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testSummaryStatistics() {
+        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
+        TemperatureSeriesAnalysis test = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expAverage = 1.0;
+        double expDeviation = 0.0;
+        double expMin = -5.0;
+        double expMax = 5.0;
+        TempSummaryStatistics actualResult = test.summaryStatistics();
+        double actualAvg = actualResult.avgTemp;
+        double actualDev = actualResult.devTemp;
+        double actualMin = actualResult.minTemp;
+        double actualMax = actualResult.maxTemp;
+        assertEquals(expAverage, actualAvg, 0.00001);
+        assertEquals(expDeviation, actualDev, 0.00001);
+        assertEquals(expMin, actualMin, 0.00001);
+        assertEquals(expMax, actualMax, 0.00001);
     }
 }
 

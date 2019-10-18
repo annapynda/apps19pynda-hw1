@@ -153,13 +153,16 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
+        if (temp.length == 0) {
+            throw new IllegalArgumentException();
+        }
         double[] res;
         res = new double[temp.length * 2];
         int sum = 0;
         int i = 0;
-        for (double t : temp) {
-            res[i] = t;
-            sum += t;
+        for (int j = 0; j < temp.length; j++) {
+            res[i] = temp[j];
+            sum += temp[j];
             i++;
         }
         for (double t : temps) {

@@ -11,8 +11,8 @@ public class TempSummaryStatistics {
         devTemp = dev;
         minTemp = min;
         maxTemp = max;
-
     }
+
     public double getAvg() {
         return avgTemp;
     }

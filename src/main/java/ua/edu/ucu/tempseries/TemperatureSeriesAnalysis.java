@@ -128,11 +128,8 @@ public class TemperatureSeriesAnalysis {
             throw new IllegalArgumentException();
 
         }
-        if (temp.length == 1) {
-            if (temp[0] > tempValue) {
-                return temp;
-            }
-
+        if (temp.length == 1 && temp[0] > tempValue) {
+            return temp;
         }
         int leng_needed = 0;
         for (double t : temp) {
@@ -155,7 +152,6 @@ public class TemperatureSeriesAnalysis {
 
     public TempSummaryStatistics summaryStatistics() {
         return new TempSummaryStatistics(average(), deviation(), min(), max());
-
     }
 
     public int addTemps(double... temps) {

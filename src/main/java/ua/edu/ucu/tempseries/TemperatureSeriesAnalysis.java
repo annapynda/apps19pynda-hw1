@@ -11,8 +11,9 @@ public class TemperatureSeriesAnalysis {
 
     public TemperatureSeriesAnalysis(double[] temper) {
         this.temp = Arrays.copyOf(temper, temper.length);
+        int n = -273;
         for (int i = 0; i < temp.length; i++) {
-            if (temp[i] <= -273) {
+            if (temp[i] <= n) {
                 throw new InputMismatchException();
             }
         }

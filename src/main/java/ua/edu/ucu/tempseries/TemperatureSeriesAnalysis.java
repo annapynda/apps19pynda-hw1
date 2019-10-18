@@ -143,7 +143,9 @@ public class TemperatureSeriesAnalysis {
             if (temp[i] > tempValue) {
                 new_arr[k] = temp[i];
                 k++;
-                if (k >= leng_needed) break;
+                if (k >= leng_needed) {
+                    break;
+                }
             }
         }
         return new_arr;

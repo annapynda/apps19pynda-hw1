@@ -35,11 +35,11 @@ public class TemperatureSeriesAnalysis {
         if (temp.length == 0) {
             throw new IllegalArgumentException();
         }
-        double average_v = this.average();
+        double averagev = this.average();
         double sum = 0;
         for (int i = 0; i < temp.length; i++) {
-            double new_el = temp[i] - average_v;
-            sum += new_el;
+            double newel = temp[i] - averagev;
+            sum += newel;
 
         }
         return Math.sqrt(sum / temp.length);
@@ -93,13 +93,13 @@ public class TemperatureSeriesAnalysis {
         if (temp.length == 1) {
             return temp[0];
         }
-        double closest_el = temp[0] - tempValue;
+        double closestel = temp[0] - tempValue;
         for (int i = 0; i < temp.length; i++) {
-            if (Math.abs(closest_el) > Math.abs(temp[i] - tempValue)) {
-                closest_el = temp[i] - tempValue;
+            if (Math.abs(closestel) > Math.abs(temp[i] - tempValue)) {
+                closestel = temp[i] - tempValue;
             }
         }
-        return closest_el;
+        return closestel;
     }
 
     public double[] findTempsLessThen(double tempValue) {
@@ -107,13 +107,13 @@ public class TemperatureSeriesAnalysis {
             throw new IllegalArgumentException();
 
         }
-        int leng_needed = 0;
+        int lengneeded = 0;
         for (double t : temp) {
             if (t < tempValue) {
-                leng_needed++;
+                lengneeded++;
             }
         }
-        double[] new_arr = new double[leng_needed];
+        double[] new_arr = new double[lengneeded];
         for (int i = 0; i < temp.length; i++) {
             if (temp[i] < tempValue) {
                 new_arr[i] = temp[i];
@@ -132,19 +132,19 @@ public class TemperatureSeriesAnalysis {
         if (temp.length == 1 && temp[0] > tempValue) {
             return temp;
         }
-        int leng_needed = 0;
+        int lengneeded = 0;
         for (double t : temp) {
             if (t < tempValue) {
-                leng_needed++;
+                lengneeded++;
             }
         }
         int k = 0;
-        double[] new_arr = new double[leng_needed];
+        double[] new_arr = new double[lengneeded];
         for (int i = 0; i < temp.length; i++) {
             if (temp[i] > tempValue) {
                 new_arr[k] = temp[i];
                 k++;
-                if (k >= leng_needed) {
+                if (k >= lengneeded) {
                     break;
                 }
             }

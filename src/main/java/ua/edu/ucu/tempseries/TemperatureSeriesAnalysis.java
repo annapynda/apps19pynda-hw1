@@ -108,14 +108,14 @@ public class TemperatureSeriesAnalysis {
                 lengneeded++;
             }
         }
-        double[] new_arr = new double[lengneeded];
+        double[] newArr = new double[lengneeded];
         for (int i = 0; i < temp.length; i++) {
             if (temp[i] < tempValue) {
-                new_arr[i] = temp[i];
+                newArr[i] = temp[i];
             }
 
         }
-        return new_arr;
+        return newArr;
 
     }
 
@@ -134,17 +134,17 @@ public class TemperatureSeriesAnalysis {
             }
         }
         int k = 0;
-        double[] new_arr = new double[lengneeded];
+        double[] newArr = new double[lengneeded];
         for (int i = 0; i < temp.length; i++) {
             if (temp[i] > tempValue) {
-                new_arr[k] = temp[i];
+                newArr[k] = temp[i];
                 k++;
                 if (k >= lengneeded) {
                     break;
                 }
             }
         }
-        return new_arr;
+        return newArr;
 
     }
 
